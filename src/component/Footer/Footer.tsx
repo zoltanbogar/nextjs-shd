@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Logo from "@/resources/images/logo/shd_logo_blue-2.png";
 import styles from './Footer.module.css';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -79,49 +80,31 @@ const Footer = () => {
 
                     <ul className={styles.List__list}>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/category/2">
-                          Sensors
-                        </a>
+                        <Link className={styles.Link} href="/category/2">Sensors</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/category/3">
-                          Buttons
-                        </a>
+                        <Link className={styles.Link} href="/category/3">Buttons</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/category/7">
-                          Blinds
-                        </a>
+                        <Link className={styles.Link} href="/category/7">Blinds</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/category/8">
-                          Cameras
-                        </a>
+                        <Link className={styles.Link} href="/category/8">Cameras</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/category/4">
-                          Energy
-                        </a>
+                        <Link className={styles.Link} href="/category/4">Energy</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/category/1">
-                          Hubs
-                        </a>
+                        <Link className={styles.Link} href="/category/1">Hubs</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/category/5">
-                          Lighting
-                        </a>
+                        <Link className={styles.Link} href="/category/5">Lighting</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/category/9">
-                          Safety
-                        </a>
+                        <Link className={styles.Link} href="/category/9">Safety</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/category/6">
-                          Speakers
-                        </a>
+                        <Link className={styles.Link} href="/category/6">Speakers</Link>
                       </li>
                     </ul>
 
@@ -134,54 +117,34 @@ const Footer = () => {
 
                     <ul className={styles.List__list}>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/brand/1">
-                          Aqara
-                        </a>
+                        <Link className={styles.Link} href="/brand/1">Aqara</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/brand/2">
-                          Eve
-                        </a>
+                        <Link className={styles.Link} href="/brand/2">Eve</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/brand/4">
-                          Ikea
-                        </a>
+                        <Link className={styles.Link} href="/brand/4">Ikea</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/brand/5">
-                          Meross
-                        </a>
+                        <Link className={styles.Link} href="/brand/5">Meross</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/brand/3">
-                          Nanoleaf
-                        </a>
+                        <Link className={styles.Link} href="/brand/3">Nanoleaf</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/brand/6">
-                          SwitchBot
-                        </a>
+                        <Link className={styles.Link} href="/brand/6">SwitchBot</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/brand/9">
-                          Tuya
-                        </a>
+                        <Link className={styles.Link} href="/brand/9">Tuya</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/brand/7">
-                          VOCOlinc
-                        </a>
+                        <Link className={styles.Link} href="/brand/7">VOCOlinc</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/brand/10">
-                          WEMO
-                        </a>
+                        <Link className={styles.Link} href="/brand/10">WEMO</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/brand/8">
-                          Xiaomi
-                        </a>
+                        <Link className={styles.Link} href="/brand/8">Xiaomi</Link>
                       </li>
                     </ul>
                   </section>
@@ -193,29 +156,19 @@ const Footer = () => {
 
                     <ul className={styles.List__list}>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/system/1">
-                          Apple Home
-                        </a>
+                        <Link className={styles.Link} href="/system/1">Apple Home</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/system/2">
-                          Google
-                        </a>
+                        <Link className={styles.Link} href="/system/2">Google</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/system/3">
-                          Amazon
-                        </a>
+                        <Link className={styles.Link} href="/system/3">Amazon Alexa</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/system/4">
-                          Home Assistant
-                        </a>
+                        <Link className={styles.Link} href="/system/4">Home Assistant</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="/system/5">
-                          Homebridge
-                        </a>
+                        <Link className={styles.Link} href="/system/5">Homebridge</Link>
                       </li>
                     </ul>
                   </section>
@@ -224,24 +177,16 @@ const Footer = () => {
 
                     <ul className={styles.List__list}>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="#">
-                          Facebook
-                        </a>
+                        <Link className={styles.Link} href="#">Facebook</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="#">
-                          Instagram
-                        </a>
+                        <Link className={styles.Link} href="#">Instagram</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="#">
-                          YouTube
-                        </a>
+                        <Link className={styles.Link} href="#">YouTube</Link>
                       </li>
                       <li className={styles.List__item}>
-                        <a className={styles.Link} href="#">
-                          TikTok
-                        </a>
+                        <Link className={styles.Link} href="#">TikTok</Link>
                       </li>
                     </ul>
                   </section>

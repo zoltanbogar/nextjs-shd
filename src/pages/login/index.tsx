@@ -3,6 +3,7 @@ import axios from "axios";
 import {useDispatch} from "react-redux";
 
 import Router from 'next/router';
+import Link from "next/link";
 
 const Login: NextPage = () => {
   const dispatch = useDispatch();
@@ -298,7 +299,7 @@ const Login: NextPage = () => {
                                                     <div
                                                       className="Box-root Flex-flex Flex-alignItems--center Flex-direction--column Flex-justifyContent--center Flex-wrap--nowrap">
                                                       <div className="Box-root Box-hideIfEmpty"
-                                                           style={{pointerEvents: "auto"}}><a data-db-analytics-name="email_password_input_use_sso_link"
+                                                           style={{pointerEvents: "auto"}}><Link data-db-analytics-name="email_password_input_use_sso_link"
                                                                                             tabIndex={6}
                                                                                             className="UnstyledLink ButtonLink Flex-flex"
                                                                                             href="/login">
@@ -314,7 +315,7 @@ const Login: NextPage = () => {
                                                             style={{marginTop: "-1px"}}><span>Use single sign-on (SSO) instead</span></span>
                                                           </div>
                                                         </div>
-                                                      </a></div>
+                                                      </Link></div>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -347,8 +348,8 @@ const Login: NextPage = () => {
                             className="Box-root Flex-flex Flex-direction--column Flex-justifyContent--flexStart Flex-wrap--nowrap"
                             style={{marginLeft: "-24px", marginTop: "-24px"}}>
                             <div className="Box-root Box-hideIfEmpty Margin-top--24 Margin-left--24"
-                                 style={{pointerEvents: "auto"}}><span><span><span>Don't have an account?</span> </span><a
-                              className="UnstyledLink InlineLink Text-color--blue" href="/register">Sign up</a></span>
+                                 style={{pointerEvents: "auto"}}><span><span><span>Don&apos;t have an account?</span> </span><Link
+                              className="UnstyledLink InlineLink Text-color--blue" href="/register">Sign up</Link></span>
                             </div>
                           </div>
                         </div>

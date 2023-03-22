@@ -1,9 +1,10 @@
 import styles from "../../../pages/company/company.module.css";
 
 import Restaurants from "./Restaurants/Restaurants";
+import Image from "next/image";
 
 const CompanyCard = (companies: any[]) => {
-  let content: JSX.Element[] = [<div>Loading</div>];
+  let content: JSX.Element[] = [<div key={0}>Loading</div>];
 
   if (companies) {
     //console.log(companies);
@@ -15,7 +16,7 @@ const CompanyCard = (companies: any[]) => {
       //console.log(company, idx);
       return (<div className={styles.profileCard} key={company.id}>
         <figure className={styles.profileCard__img}>
-          <img src={'http://localhost:1337'+company.attributes.Image.data[0].attributes.url} alt=""/>
+          <Image src={'http://localhost:1337'+company.attributes.Image.data[0].attributes.url} alt=""/>
         </figure>
 
         <div className={styles.profileCard__desc}>

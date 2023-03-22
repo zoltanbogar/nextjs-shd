@@ -3,6 +3,7 @@ import {NextPage} from "next";
 //import linstance from '../api/auth/register';
 import axios from "axios";
 import {SyntheticEvent} from "react";
+import Link from "next/link";
 
 const Register: NextPage = () => {
   async function doRegister(values: any) {
@@ -664,8 +665,8 @@ console.log(data);
                               </div>
                             </div>
                             <div className="Box-root Padding-top--12 Flex-flex Flex-justifyContent--center">
-                              <div className="Box-root"><span><span><span>Have an account?</span> </span><a className="UnstyledLink InlineLink Text-color--blue"
-                                                                                                            href="/login">Sign in</a></span>
+                              <div className="Box-root"><span><span><span>Have an account?</span> </span><Link className="UnstyledLink InlineLink Text-color--blue"
+                                                                                                            href="/login">Sign in</Link></span>
                               </div>
                             </div></div>
                       </div>

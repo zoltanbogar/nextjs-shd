@@ -45,13 +45,13 @@ const Nav = ({menuRef, set, isOpen, setNavHover, isInverse}) => {
           </li>*/}
 
           <li className={styles.SiteHeaderNavItem}>
-            <a className={styles.SiteHeaderNavItem__link} href="/wiz/phone">Wizard</a>
+            <Link className={styles.SiteHeaderNavItem__link} href="/wiz/phone">Wizard</Link>
           </li>
         </ul>
       </nav>
 
       <nav className={styles.SiteHeader__ctaNav}>
-        <a className={`${styles.CtaButton} ${styles.variant__Button} ${styles.CtaButton__arrow}`}
+        <Link className={`${styles.CtaButton} ${styles.variant__Button} ${styles.CtaButton__arrow}`}
            href="/login"
            data-js-controller="AnalyticsButton"
            data-analytics-category="Buttons"
@@ -66,7 +66,7 @@ const Nav = ({menuRef, set, isOpen, setNavHover, isInverse}) => {
               <path className={styles.HoverArrow__tipPath} d="M1 1l4 4-4 4"></path>
             </g>
           </svg>
-        </a>
+        </Link>
       </nav>
     </div>
   )
