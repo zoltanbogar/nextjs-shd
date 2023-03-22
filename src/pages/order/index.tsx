@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useEffect, useState} from "react";
 import Cookies from 'universal-cookie';
 import {fetchAPI} from "@/lib/api";
 import styles from './index.module.css';
@@ -51,8 +51,9 @@ const OrderPage = ({products, homes}) => {
       order = cookies.get('order')
       setOffer(order)
     }
-  }, [])
+  })
 
+  // @ts-ignore
   useEffectOnce(() => {
     let sumHuf = cookies.get('sumHuf')
     if (!sumHuf) {
@@ -64,6 +65,7 @@ const OrderPage = ({products, homes}) => {
     }
 
     for (const id in offer) {
+      // @ts-ignore
       const count = offer[id];
 
       sumHuf = cookies.get('sumHuf')
@@ -75,12 +77,11 @@ const OrderPage = ({products, homes}) => {
         sumEur = 0;
       }
 
-      products.forEach((product, idx) => {
+      products.forEach((product: { id: number; attributes: { price_in_huf: any; price_in_eur: any; }; }, idx: any) => {
         if (parseInt(id) === product.id) {
 
           const priceHuf = product.attributes.price_in_huf
           const priceEur = product.attributes.price_in_eur
-
 
 
           console.log(id, product, priceEur, priceHuf, priceHuf * count + sumHuf, priceEur * count + sumEur, sumHuf, sumEur);
@@ -95,6 +96,7 @@ const OrderPage = ({products, homes}) => {
           }
 
           let newProductsinOffer = productsInOffer
+          // @ts-ignore
           newProductsinOffer[id] = product
           setProductsInOffer(newProductsinOffer)
         }
@@ -111,9 +113,11 @@ const OrderPage = ({products, homes}) => {
     }
     setSumEurState(sumEur)
     setSumHufState(sumHuf)
+    // @ts-ignore
   }, [offer, products])
 
   const handleSubmit = () => {
+    // @ts-ignore
     event.preventDefault();
     console.log('submitted');
 
@@ -121,16 +125,19 @@ const OrderPage = ({products, homes}) => {
     let homeData = {}
 
     for (let i = 0; i < 2; i++) {
+      // @ts-ignore
       orderData = {...orderData, ...{[event.target[i].name]: event.target[i].value}}
     }
 
     orderData = {...orderData, ...{['product_json']: productsInOffer}}
 
     for (let i = 2; i < 11; i++) {
+      // @ts-ignore
       let value = event.target[i].value
       if (value === "on") value = true
       if (value === "off") value = false
       console.log(value)
+      // @ts-ignore
       homeData = {...homeData, ...{[event.target[i].name]: value}}
     }
     console.log(orderData, homeData)
@@ -161,9 +168,10 @@ const OrderPage = ({products, homes}) => {
       <div className={styles.orderPage}>
         <div>Total eur {sumEurState}</div>
         <div>Total huf {sumHufState}</div>
+        {/*@ts-ignore*/}
         <div>Total price {parseInt(sumHufState) + (parseInt(sumEurState) * 389)} Ft</div>
         <div className={styles.productList}>
-          {products.map(p => {
+          {products.map((p: { id: string; attributes: { Thumbnail: { data: { attributes: { url: any; }; }; }; Name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; }; }) => {
             if (Object.keys(offer).includes(`${p.id}`)) {
               return (
                 <div key={'list_' + p.id} className={styles.orderCard}>

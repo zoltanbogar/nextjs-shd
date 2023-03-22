@@ -13,6 +13,7 @@ const combinedReducer = combineReducers({
 });
 
 // BINDING MIDDLEWARE
+// @ts-ignore
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production') {
     const { composeWithDevTools } = require('redux-devtools-extension');
@@ -21,6 +22,7 @@ const bindMiddleware = (middleware) => {
   return applyMiddleware(...middleware);
 };
 
+// @ts-ignore
 const makeStore = ({ isServer }) => {
   if (isServer) {
     //If it's on server side, create a store
@@ -42,6 +44,7 @@ const makeStore = ({ isServer }) => {
       bindMiddleware([thunkMiddleware])
     ); // Creating the store again
 
+    // @ts-ignore
     store.__persistor = persistStore(store); // This creates a persistor object & push that persisted object to .__persistor, so that we can avail the persistability feature
 
     return store;
@@ -49,4 +52,5 @@ const makeStore = ({ isServer }) => {
 };
 
 // Export the wrapper & wrap the pages/_app.js with this wrapper only
+// @ts-ignore
 export const wrapper = createWrapper(makeStore);

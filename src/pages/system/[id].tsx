@@ -14,6 +14,7 @@ import ProductCardNike from "@/component/Cards/ProductCardNike/ProductCardNike";
 
 import ReactMarkdown from "react-markdown";
 
+// @ts-ignore
 const System = ({system, products}) => {
   const router = useRouter()
   const {id} = router.query

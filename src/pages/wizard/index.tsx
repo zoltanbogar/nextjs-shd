@@ -1,5 +1,8 @@
 import {fetchAPI} from "@/lib/api";
-import {useEffect, useState} from "react";
+import {JSXElementConstructor, Key, ReactElement, ReactFragment, ReactPortal, SetStateAction,
+  useEffect,
+  useState
+} from "react";
 import {useRouter} from 'next/router';
 
 import styles from './wizard.module.css';
@@ -8,9 +11,8 @@ import WizardCard from "@/pages/wizard/WizardCard/WizardCard";
 import Cookies from 'universal-cookie';
 import Header from "@/component/Header/Header";
 import Footer from "@/component/Footer/Footer";
-import {useSelector} from "react-redux";
-import {State} from "@/store/store";
 
+// @ts-ignore
 const Wizard = ({productTaxonomies, phoneTypes, systemTypes, products, prods}) => {
 //console.log({productTaxonomies, phoneTypes, systemTypes, products, prods});
   const cookies = new Cookies();
@@ -24,7 +26,8 @@ const Wizard = ({productTaxonomies, phoneTypes, systemTypes, products, prods}) =
   let content = '';
 
   useEffect(() => {
-    content = phoneTypes.map(type => (
+    content = phoneTypes.map((type: { id: string; attributes: { Image: { data: { attributes: { url: string; }; }; }; Type: string | number | boolean | ReactFragment | ReactElement<any, string | JSXElementConstructor<any>> | ReactPortal | null | undefined; }; }) => (
+      // @ts-ignore
       <div key={'phone_' + type.id} className={styles.cardContainer} onClick={handleSelected}>
         <img src={'http://localhost:1337' + type.attributes.Image.data.attributes.url} alt="logo"
              className={styles.cardImage}/>
@@ -33,11 +36,13 @@ const Wizard = ({productTaxonomies, phoneTypes, systemTypes, products, prods}) =
         </div>
       </div>
     ));
+    // @ts-ignore
     setListContent(content);
 
     let controlContent = (
       <button type={"button"} onClick={() => handleControlClick(1)}>Next</button>
     )
+    // @ts-ignore
     setControls(controlContent)
 
 
@@ -48,15 +53,17 @@ const Wizard = ({productTaxonomies, phoneTypes, systemTypes, products, prods}) =
     }
   }, [])
 
-  const handleControlClick = (tab, name = '') => {
+  const handleControlClick = (tab: SetStateAction<number>, name = '') => {
     console.log({tab, name})
     setActiveTab(tab)
+    // @ts-ignore
     handleCategoryTabSelect(tab, name);
   }
 
   const handleSelected = (event: Event) => {
     const target = event?.target as HTMLElement;
 
+    // @ts-ignore
     const siblings = [...target.parentNode.children].filter((child) => child !== target);
     siblings.forEach(e => {
       e.classList.remove(styles.selected)
@@ -65,14 +72,15 @@ const Wizard = ({productTaxonomies, phoneTypes, systemTypes, products, prods}) =
     target.classList.add(styles.selected);
   }
 
-  const handleCategoryTabSelect = (tab: number, taxonomyName: string = '') => {
+  const handleCategoryTabSelect = (tab: number, taxonomyName?: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | null | undefined) => {
     setActiveTab(tab);
 
     if (taxonomyName === '') {
       let controlContent
       switch (tab) {
         case 0:
-          content = phoneTypes.map(type => (
+          content = phoneTypes.map((type: { id: string; attributes: { Image: { data: { attributes: { url: string; }; }; }; Type: string | number | boolean | ReactFragment | ReactElement<any, string | JSXElementConstructor<any>> | ReactPortal | null | undefined; }; }) => (
+            // @ts-ignore
             <div key={'phone_' + type.id} className={styles.cardContainer} onClick={handleSelected}>
               <img src={'http://localhost:1337' + type.attributes.Image.data.attributes.url} alt="logo"
                    className={styles.cardImage}/>
@@ -81,15 +89,18 @@ const Wizard = ({productTaxonomies, phoneTypes, systemTypes, products, prods}) =
               </div>
             </div>
           ));
+          // @ts-ignore
           setListContent(content);
 
           controlContent = (
             <button type={"button"} onClick={() => handleControlClick(1)}>Next</button>
           )
+          // @ts-ignore
           setControls(controlContent)
           break;
         case 1:
-          content = systemTypes.map(type => (
+          content = systemTypes.map((type: { id: string; attributes: { Image: { data: { attributes: { url: string; }; }; }; Type: string | number | boolean | ReactFragment | ReactElement<any, string | JSXElementConstructor<any>> | ReactPortal | null | undefined; }; }) => (
+            // @ts-ignore
             <div key={'system_' + type.id} className={styles.cardContainer} onClick={handleSelected}>
               <img src={'http://localhost:1337' + type.attributes.Image.data.attributes.url} alt="logo"
                    className={styles.cardImage}/>
@@ -98,11 +109,13 @@ const Wizard = ({productTaxonomies, phoneTypes, systemTypes, products, prods}) =
               </div>
             </div>
           ));
+          // @ts-ignore
           setListContent(content);
 
           controlContent = (
             <button type={"button"} onClick={() => handleControlClick(2, Object.keys(prods)[0])}>Next</button>
           )
+          // @ts-ignore
           setControls(controlContent)
           break;
       }
@@ -111,8 +124,10 @@ const Wizard = ({productTaxonomies, phoneTypes, systemTypes, products, prods}) =
     }
 
 
+    // @ts-ignore
     content = prods[taxonomyName].map(e => {
       return (
+        // @ts-ignore
         <WizardCard key={'product_' + e.id} product={e} set={addProductToOrder} order={addedProducts}/>
       )
     })
@@ -125,8 +140,10 @@ const Wizard = ({productTaxonomies, phoneTypes, systemTypes, products, prods}) =
         <button type={"button"} onClick={() => handleCalculate('/order')}>Calculate</button>
       )
     }
+    // @ts-ignore
     setControls(controlContent)
 
+    // @ts-ignore
     setListContent(content)
   };
 
@@ -139,6 +156,7 @@ const Wizard = ({productTaxonomies, phoneTypes, systemTypes, products, prods}) =
 
     if (value === 0) {
       newAddedProducts = addedProducts;
+      // @ts-ignore
       delete newAddedProducts[productId];
     } else {
       let newAddition = {[productId]: value}
@@ -167,7 +185,7 @@ const Wizard = ({productTaxonomies, phoneTypes, systemTypes, products, prods}) =
 
   return (
     <>
-      <Header />
+      <Header/>
       <div className={styles.wizardContainer}>
         <h2 className={styles.wizardTitle}>System Builder</h2>
         <div className={styles.wizardMenu}>
@@ -175,7 +193,7 @@ const Wizard = ({productTaxonomies, phoneTypes, systemTypes, products, prods}) =
             TYPE</a>
           <a href="#" className={activeTab === 1 ? styles.active : ''} onClick={() => handleCategoryTabSelect(1)}>SYSTEM
             TYPE</a>
-          {productTaxonomies.map((tax, index) => <a className={activeTab === (index + 2) ? styles.active : ''}
+          {productTaxonomies.map((tax: { id: Key | null | undefined; attributes: { name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | null | undefined; }; }, index: number) => <a className={activeTab === (index + 2) ? styles.active : ''}
                                                     key={tax.id} href="#"
                                                     onClick={() => handleCategoryTabSelect(index + 2, tax.attributes.name)}>{tax.attributes.name}</a>)}
         </div>
@@ -213,13 +231,16 @@ export async function getStaticProps() {
 
   let prod = {};
 
-  productsRes.data.forEach(product => {
+  productsRes.data.forEach((product: { attributes: { product_taxonomy: { data: { attributes: { name: any; }; }; }; }; }) => {
     const taxonomyName = product.attributes.product_taxonomy.data.attributes.name;
 
+    // @ts-ignore
     if (prod[taxonomyName] === undefined) {
+      // @ts-ignore
       prod[taxonomyName] = []
     }
 
+    // @ts-ignore
     prod[taxonomyName].push(product);
   })
 

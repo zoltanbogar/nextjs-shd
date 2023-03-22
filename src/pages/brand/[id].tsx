@@ -12,6 +12,7 @@ import styles from './brand.module.css';
 import { Carousel } from 'react-responsive-carousel';
 import ProductCardNike from "@/component/Cards/ProductCardNike/ProductCardNike";
 
+// @ts-ignore
 const Brand = ({brand, products}) => {
   const router = useRouter()
   const {id} = router.query

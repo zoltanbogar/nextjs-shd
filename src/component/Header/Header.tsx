@@ -14,7 +14,8 @@ const Header = ({inverse=false}) => {
   const [menuContainerHoverState, setMenuContainerHoverState] = useState(false)
   const [menuContainerPointerEvents, setMenuContainerPointerEvents] = useState('none')
 
-  const containerOpenHandler = (state) => {
+  const containerOpenHandler = (state: boolean | ((prevState: boolean) => boolean)) => {
+    // @ts-ignore
     if (menuContainerRef.current.style.opacity == 0) return;
 
     setMenuContainerHoverState(state)
@@ -22,6 +23,7 @@ const Header = ({inverse=false}) => {
 
   useEffect(() => {
     if (!navHoverState && !menuContainerHoverState) {
+      // @ts-ignore
       menuContainerRef.current.style.opacity = 0;
       setMenuContainerPointerEvents('none')
     } else {

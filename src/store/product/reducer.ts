@@ -7,7 +7,7 @@ const initialState = {
 };
 
 // Creating my reducer
-export default function reducer(state = initialState, action) {
+export default function reducer(state = initialState, action: { type: any; payload: any; }) {
   switch (action.type) {
     case ADD_PRODUCTS:
       return { ...state, products: action.payload };

@@ -38,8 +38,6 @@ const ProductCardNike = ({products, invert}) => {
     )
   );
 
-  console.log(productCardsContent);
-
   return (
     <div className={`${styles.productCardsContainer} ${invert ? styles.productCardsContainerInvert : ''}`}>
       <h2 className={styles.legend}>Latest</h2>

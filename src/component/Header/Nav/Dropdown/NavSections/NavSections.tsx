@@ -162,6 +162,7 @@ const NavSections = ({serial, subNavItemHovered, hoverBackgroundOffset, setSubNa
                         <li className={styles.SiteNavItem} key={item.serial}>
                           <a href={item.url} className={styles.SiteNavItem__link}>
                               <span className={styles.SiteNavItem__iconContainer}>
+                                {/* @ts-ignore */}
                                 {getMenuIcon(item.label)}
                               </span>
                             <span className={styles.SiteNavItem__labelContainer}>

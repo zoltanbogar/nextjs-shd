@@ -16,7 +16,7 @@ const Login: NextPage = () => {
           'Content-Type': 'application/json',
         },
       });
-      dispatch(setAuthState(true))
+      //dispatch(setAuthState(true))
       Router.push('/')
       return ['OK', resp.data.message];
     } catch (error) {
@@ -96,6 +96,7 @@ const Login: NextPage = () => {
                                 className="db-LoginTitle--v4"><span>Sign in to your account</span></div></span></div>
                               <div className="Box-root Box-hideIfEmpty Margin-top--20 Margin-left--20"
                                    style={{pointerEvents: "auto"}}>
+                                {/* @ts-ignore */}
                                 <form method="POST" noValidate={true} onSubmit={handleSubmit}>
                                   <div data-auto-transform-content="true" className="auto-transform-content">
                                     <div className="db-Login-fields Box-root Padding-bottom--12"

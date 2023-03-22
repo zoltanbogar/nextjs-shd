@@ -2,6 +2,7 @@ import styles from "@/component/Header/Nav/Dropdown/Dropdown.module.css";
 
 import SubNavItems from "@/component/Header/Nav/Dropdown/NavItems/SubNavItems/SubNavItems";
 
+// @ts-ignore
 const NavItems = ({setSubNavItemBackground}) => {
   const subNavItemsContent = [
     {serial: 0, label: 'Product Categories', body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', setBackground: setSubNavItemBackground},

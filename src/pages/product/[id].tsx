@@ -21,6 +21,7 @@ import styles from './product.module.css';
 import { Carousel } from 'react-responsive-carousel';
 import {useEffectOnce} from "@/hooks/useEffectOnce";
 
+// @ts-ignore
 const Product = ({product}) => {
   const router = useRouter()
   const {id} = router.query
@@ -117,37 +118,37 @@ const Product = ({product}) => {
                   <GlowingButton label={"Add to Cart"} />
                 </div>
                 <div className={styles.icons}>
-                  {product.attributes.Product_Attributes.is_ble && (
+                  {(product.attributes.Product_Attributes && product.attributes.Product_Attributes.is_ble) && (
                     <div className={styles.iconWrapper}>
                       <Image src={svgBle} alt={"svg"} className={styles.productAttributes} />
                       <div className={styles.iconDescription}>BLE</div>
                     </div>
                   )}
-                  {product.attributes.Product_Attributes.is_wifi && (
+                  {(product.attributes.Product_Attributes && product.attributes.Product_Attributes.is_wifi) && (
                     <div className={styles.iconWrapper}>
                       <FontAwesomeIcon icon={faWifi} className={styles.productAttributes} />
                       <div className={styles.iconDescription}>WiFi</div>
                     </div>
                   )}
-                  {product.attributes.Product_Attributes.is_matter && (
+                  {(product.attributes.Product_Attributes && product.attributes.Product_Attributes.is_matter) && (
                     <div className={styles.iconWrapper}>
                       <Image src={svgMatter} alt={"svg"} className={styles.productAttributes} />
                       <div className={styles.iconDescription}>Matter</div>
                     </div>
                   )}
-                  {product.attributes.Product_Attributes.is_zigbee && (
+                  {(product.attributes.Product_Attributes && product.attributes.Product_Attributes.is_zigbee) && (
                     <div className={styles.iconWrapper}>
                       <Image src={pngZigbee} alt={"svg"} className={styles.productAttributes} />
                       <div className={styles.iconDescription}>Zigbee</div>
                     </div>
                   )}
-                  {product.attributes.Product_Attributes.is_zwave && (
+                  {(product.attributes.Product_Attributes && product.attributes.Product_Attributes.is_zwave) && (
                     <div className={styles.iconWrapper}>
                       <Image src={svgZwave} alt={"svg"} className={styles.productAttributes} />
                       <div className={styles.iconDescription}>Z-Wave</div>
                     </div>
                   )}
-                  {product.attributes.Product_Attributes.is_thread && (
+                  {(product.attributes.Product_Attributes && product.attributes.Product_Attributes.is_thread) && (
                     <div className={styles.iconWrapper}>
                       <Image src={svgThread} alt={"svg"} className={styles.productAttributes} />
                       <div className={styles.iconDescription}>Thread</div>

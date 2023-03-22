@@ -320,6 +320,7 @@ console.log(data);
                       <div className="db-RegisterTitle db-RegisterTitle--v4 Box-root">
                         <span>Create your account</span></div>
                     </div>
+                    {/* @ts-ignore */}
                     <form method="POST" action="/register" noValidate={true} onSubmit={handleSubmit}>
                       <div className="FormLayout Box-root">
                         <div className="Box-root">

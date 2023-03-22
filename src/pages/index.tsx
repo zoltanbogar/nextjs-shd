@@ -5,7 +5,6 @@ import styles from '../styles/Home.module.css'
 import Canvas from '../component/Canvas/Canvas';
 import Header from '../component/Header/Header';
 import Cards from "../component/Cards/Cards";
-import ProductCard from "@/component/Cards/ProductCard/ProductCard";
 import ProductCardNike from "@/component/Cards/ProductCardNike/ProductCardNike";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -97,7 +96,7 @@ const Home: NextPage = ({products}) => {
 
       {/*<ProductCard products={products} />*/}
 
-      <ProductCardNike products={products} />
+      <ProductCardNike products={products} invert={false} />
 
       <Footer />
     </div>

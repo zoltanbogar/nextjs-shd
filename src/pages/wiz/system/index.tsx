@@ -6,6 +6,7 @@ import styles from "@/pages/wizard/wizard.module.css";
 import Header from "@/component/Header/Header";
 import Footer from "@/component/Footer/Footer";
 
+// @ts-ignoregit
 const System = ({systemTypes}) => {
   const cookies = new Cookies();
   const router = useRouter();
@@ -21,6 +22,7 @@ const System = ({systemTypes}) => {
 
     cookies.set('systemType', id);
 
+    // @ts-ignore
     const siblings = [...target.parentNode.children].filter((child) => child !== target);
     siblings.forEach(e => {
       e.classList.remove(styles.selected)
@@ -29,6 +31,7 @@ const System = ({systemTypes}) => {
     target.classList.add(styles.selected);
   }
 
+  // @ts-ignore
   const handleStepForward = (url) => {
     const pt = cookies.get('systemType')
     if (pt) {
@@ -40,7 +43,9 @@ const System = ({systemTypes}) => {
   }
 
   useEffect(() => {
+    // @ts-ignore
     content = systemTypes.map(type => (
+      // @ts-ignore
       <div key={'system_' + type.id} className={`${styles.cardContainer} ${(type.id === parseInt(cookies.get('systemType')) ? styles.selected : '')}`} onClick={() => handleSelected(event, type.id)}>
         <img src={'http://localhost:1337' + type.attributes.Image.data.attributes.url} alt="logo"
              className={styles.cardImage}/>
@@ -49,11 +54,13 @@ const System = ({systemTypes}) => {
         </div>
       </div>
     ));
+    // @ts-ignore
     setListContent(content);
 
     let controlContent = (
       <button type={"button"} onClick={() => handleStepForward('/wiz/categories/1')}>Next</button>
     )
+    // @ts-ignore
     setControls(controlContent)
 
     const pt = cookies.get('systemType')

@@ -32,6 +32,8 @@
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.1",
+    "@types/qs": "^6.9.7",
+    "@types/react-css-modules": "^4.6.4",
     "axios": "^1.2.6",
     "next-redux-wrapper": "^8.1.0",
     "qs": "^6.11.0",

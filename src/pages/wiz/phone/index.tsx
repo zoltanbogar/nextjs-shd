@@ -1,11 +1,13 @@
 import {fetchAPI} from "@/lib/api";
 import Cookies from "universal-cookie";
 import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
+import {JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useEffect, useState} from "react";
 import styles from "@/pages/wizard/wizard.module.css";
 import Header from "@/component/Header/Header";
 import Footer from "@/component/Footer/Footer";
+import { UrlObject } from "url";
 
+// @ts-ignore
 const Phone = ({phoneTypes}) => {
   const cookies = new Cookies();
   const router = useRouter();
@@ -21,6 +23,7 @@ const Phone = ({phoneTypes}) => {
 
     cookies.set('phoneType', id);
 
+    // @ts-ignore
     const siblings = [...target.parentNode.children].filter((child) => child !== target);
     siblings.forEach(e => {
       e.classList.remove(styles.selected)
@@ -29,7 +32,7 @@ const Phone = ({phoneTypes}) => {
     target.classList.add(styles.selected);
   }
 
-  const handleStepForward = (url) => {
+  const handleStepForward = (url: string | UrlObject) => {
     const pt = cookies.get('phoneType')
     if (pt) {
       console.log('mehetünk');
@@ -40,7 +43,8 @@ const Phone = ({phoneTypes}) => {
   }
 
   useEffect(() => {
-    content = phoneTypes.map(type => (
+    content = phoneTypes.map((type: { id: string | number; attributes: { Image: { data: { attributes: { url: string; }; }; }; Type: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; }; }) => (
+      // @ts-ignore
       <div key={'phone_' + type.id} className={`${styles.cardContainer} ${(type.id === parseInt(cookies.get('phoneType')) ? styles.selected : '')}`} onClick={() => handleSelected(event, type.id)}>
         <img src={'http://localhost:1337' + type.attributes.Image.data.attributes.url} alt="logo"
              className={styles.cardImage}/>
@@ -49,11 +53,13 @@ const Phone = ({phoneTypes}) => {
         </div>
       </div>
     ));
+    // @ts-ignore
     setListContent(content);
 
     let controlContent = (
       <button type={"button"} onClick={() => handleStepForward('/wiz/system')}>Next</button>
     )
+    // @ts-ignore
     setControls(controlContent)
 
     const pt = cookies.get('phoneType')

@@ -4,6 +4,7 @@ import {SetStateAction, useState} from "react";
 import NavItems from "@/component/Header/Nav/Dropdown/NavItems/NavItems";
 import NavSections from "@/component/Header/Nav/Dropdown/NavSections/NavSections";
 
+// @ts-ignore
 const Dropdown = ({menuRef, set, getPointerEventsValue}) => {
   const [hoverBackgroundOffset, setHoverBackgroundOffset] = useState(0)
   const [subNavItemHovered, setSubNavItemHovered] = useState(0)

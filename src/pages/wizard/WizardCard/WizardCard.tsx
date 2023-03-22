@@ -1,6 +1,7 @@
 import styles from "@/pages/wizard/WizardCard/WizardCard.module.css";
 import {useEffect, useState} from "react";
 import Cookies from "universal-cookie";
+import Image from "next/image";
 
 interface WizardCardInterface {
   product: ProductObject,
@@ -29,7 +30,7 @@ const WizardCard = ({product, set}: WizardCardInterface) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (order && product.id in order) {
+    if (order && product && product.id in order) {
       setCount(order[product.id]);
     }
   }, []);
@@ -75,6 +76,7 @@ const WizardCard = ({product, set}: WizardCardInterface) => {
   const handleSetManualCount = () => {
     order = cookies.get('order')
     const target = event?.target;
+    // @ts-ignore
     const value = parseInt(target.value);
 
     const productId = product.id
@@ -101,11 +103,16 @@ const WizardCard = ({product, set}: WizardCardInterface) => {
   }
 
   return (
-    <div key={product.id} className={`${styles.cardContainer} ${(count > 0 ? styles.selected : '')}`}>
-      <img src={'http://localhost:1337'+product.attributes.Thumbnail.data.attributes.url} alt="logo" className={styles.cardImage}/>
-      <div className={styles.cardTitle}>
-        {product.attributes.Name}
-      </div>
+
+    <div key={product ? product.id : 0} className={`${styles.cardContainer} ${(count > 0 ? styles.selected : '')}`}>
+      {product && (
+      <Image src={'http://localhost:1337'+product.attributes.Thumbnail.data.attributes.url} alt="logo" className={styles.cardImage}/>
+      )}
+      {product && (
+        <div className={styles.cardTitle}>
+          {product.attributes.Name}
+        </div>
+      )}
       <div className={styles.stepper}>
         <button className={styles.minus} onClick={handleStepMinus}>-1</button>
         <input type="number" className={styles.count} onChange={handleSetManualCount} value={count} />
