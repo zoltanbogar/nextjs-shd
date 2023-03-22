@@ -1,0 +1,9 @@
+.restaurantsWrapper {
+  position: absolute;
+  inset: 0;
+  container: inline-size;
+}
+
+.restaurant {
+  width: 50cqw;
+}

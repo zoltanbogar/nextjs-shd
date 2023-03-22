@@ -1,0 +1,70 @@
+.wizardContainer {
+    background: #0a2540;
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    min-height: 100vh;
+}
+
+.wizardContainer > * {
+    max-width: 1080px;
+    width: 100%;
+}
+
+.wizardContent {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.wizardMenu {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+}
+
+.wizardMenu a {
+    text-transform: capitalize;
+    color: #fff;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.wizardMenu a.active, .wizardMenu a:hover {
+    color: #00d4ff;
+    position: relative;
+}
+
+.wizardMenu a.active::after, .wizardMenu a:hover::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    background: #00d4ff;
+}
+
+.wizardController {
+    margin: 40px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wizardController button {
+    padding: 15px 25px;
+    font-size: 18px;
+    color: #fff;
+    background: #00d4ff;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+}

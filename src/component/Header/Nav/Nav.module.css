@@ -1,0 +1,181 @@
+.SiteHeader__container {
+  position: relative;
+  max-width: calc(var(--columnPaddingNormal)*2 + var(--layoutWidth));
+  margin: 0 auto;
+  padding: 0 var(--columnPaddingNormal);
+}
+
+.SiteHeader__navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 56px;
+  padding: 32px var(--columnPaddingNormal) 12px;
+}
+
+@media (min-width: 900px) {
+  .SiteHeader__navContainer {
+    padding: 12px var(--columnPaddingNormal);
+  }
+}
+
+.SiteHeader__logo {
+  transition: var(--hoverTransition);
+  transition-property: color,opacity;
+  margin: 0;
+}
+
+.container .list__container {
+  display: block;
+}
+.container .list__container .list {
+  display: var(--desktopNavDisplay, flex);
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.container .list__container .list .list__item {
+  display: list-item;
+  text-align: match-parent;
+}
+.container .list__container .list .list__item .button {
+  writing-mode: horizontal-tb;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  word-spacing: normal;
+  margin-top: 0;
+  align-items: flex-start;
+  text-align: center;
+  --linkColor: var(--navColor);
+  --linkHoverColor: var(--navHoverColor);
+  --linkHoverOpacity: var(--navHoverOpacity);
+  display: block;
+  padding: 10px 20px;
+  font: var(--fontWeightBold) 15px/1.6 var(--fontFamily);
+  letter-spacing: 0.2px;
+  color: var(--navColor);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: default;
+  transition: var(--hoverTransition);
+  transition-property: color, opacity;
+}
+
+.SiteHeader__logoLink {
+  display: block;
+  outline: none;
+  padding: 4px;
+  margin: -4px;
+}
+
+.SiteHeaderNav {
+
+}
+
+.SiteHeaderNav__list {
+  display: var(--desktopNavDisplay,flex);
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.SiteHeaderNav__list[data-is-inverse="true"] .SiteHeaderNavItem__link {
+  color: #0A2540;
+}
+
+.SiteHeaderNavItem {
+
+}
+
+.SiteHeaderNavItem__link, .SiteHeaderNavItem__link.Link {
+  --linkColor: var(--navColor);
+  --linkHoverColor: var(--navHoverColor);
+  --linkHoverOpacity: var(--navHoverOpacity);
+  display: block;
+  padding: 10px 20px;
+  font: var(--fontWeightBold) 15px/1.6 var(--fontFamily);
+  letter-spacing: .2px;
+  color: var(--navColor);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font: 500 15px/1.6 "sohne-var","Helvetica Neue","Arial",sans-serif;
+}
+
+.SiteHeaderNavItem__link.Link[aria-haspopup=true], .SiteHeaderNavItem__link[aria-haspopup=true] {
+  cursor: default;
+  transition: var(--hoverTransition);
+  transition-property: color,opacity;
+}
+
+.SiteHeader__ctaNav {
+  display: var(--desktopNavDisplay,initial);
+  background: rgba(255,255,255,.2);
+  border-radius: 50px;
+}
+
+.CtaButton {
+  display: inline-block;
+  padding: 3px 0 6px;
+  border-radius: 16.5px;
+  font: var(--ctaFont);
+  color: var(--buttonColor);
+  transition: var(--hoverTransition);
+  outline: none;
+}
+
+.CtaButton.variant__Button {
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: var(--buttonColor);
+  color: var(--knockoutColor);
+  white-space: nowrap;
+  transition-property: background-color,opacity;
+}
+
+.CtaButton.variant__Button.CtaButton__arrow {
+  padding-right: 12px;
+}
+
+.HoverArrow {
+  --arrowSpacing: 5px;
+  --arrowHoverTransition: 150ms cubic-bezier(0.215,0.61,0.355,1);
+  --arrowHoverOffset: translateX(3px);
+  --arrowTipTransform: none;
+  --arrowLineOpacity: 0;
+  position: relative;
+  top: 1px;
+  margin-left: var(--arrowSpacing);
+  stroke-width: 2px;
+  fill: none;
+  stroke: currentColor;
+}
+
+.HoverArrow__linePath {
+  opacity: var(--arrowLineOpacity);
+  transition: opacity var(--hoverTransition,var(--arrowHoverTransition));
+}
+
+.HoverArrow__tipPath {
+  transform: var(--arrowTipTransform);
+  transition: transform var(--hoverTransition,var(--arrowHoverTransition));
+}
+
+.CtaButton:hover .HoverArrow__linePath {
+  --arrowLineOpacity: 1;
+}
+
+.CtaButton:hover .HoverArrow__tipPath {
+  --arrowTipTransform: var(--arrowHoverOffset);
+}

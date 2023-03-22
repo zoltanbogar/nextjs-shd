@@ -1,0 +1,78 @@
+.CtaButton {
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1.6;
+    font-family: "sohne-var","Helvetica Neue","Arial",sans-serif;
+    font-weight: 425;
+    color: #fff;
+    background-color: #0ab3ff;
+    padding: 3px 16px;
+    border: 0;
+    border-radius: 1.25rem;
+}
+
+.GlowEffect {
+    --glow-line-color: rgba(10,179,255,.8);
+    --glow-line-thickness: 2px;
+    --glow-line-length: 20px;
+    --glow-blur-color: #0ab3ff;
+    --glow-blur-size: 5px;
+    --glow-offset: 0px;
+    --animation-speed: 1200ms;
+    /* do not change, used for calculations */
+    --container-offset: 100px;
+    position: relative;
+}
+
+.GlowContainer {
+    pointer-events: none;
+    position: absolute;
+    inset: calc(var(--container-offset) / -2);
+    width: calc(100% + var(--container-offset));
+    height: calc(100% + var(--container-offset));
+    opacity: 0;
+}
+
+.GlowBlur,
+.GlowLine {
+    width: calc(100% - var(--container-offset) + var(--glow-offset));
+    height: calc(100% - var(--container-offset) + var(--glow-offset));
+    x: calc((var(--container-offset) / 2) + calc(var(--glow-offset) / -2));
+    y: calc((var(--container-offset) / 2) + calc(var(--glow-offset) / -2));
+    /* rx: 1.25rem; */
+    fill: transparent;
+    stroke: black;
+    stroke-width: 5px;
+    stroke-dasharray: var(--glow-line-length) calc(50px - var(--glow-line-length));
+}
+
+.GlowEffect:is(:hover, :focus) :is(.GlowLine, .GlowBlur) {
+    stroke-dashoffset: -80px;
+    transition: stroke-dashoffset var(--animation-speed) ease-in;
+}
+
+.GlowLine {
+    stroke: var(--glow-line-color);
+    stroke-width: var(--glow-line-thickness);
+}
+
+.GlowBlur {
+    filter: blur(var(--glow-blur-size));
+    stroke: var(--glow-blur-color);
+    stroke-width: var(--glow-blur-size);
+}
+
+.GlowEffect:is(:hover, :focus) .GlowContainer {
+    animation: glow-visibility ease-in-out var(--animation-speed);
+}
+
+@keyframes glow-visibility {
+    0%,
+    100% {
+        opacity: 0;
+    }
+    25%,
+    75% {
+        opacity: 1;
+    }
+}

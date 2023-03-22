@@ -1,0 +1,67 @@
+.card {
+  border: 0.5vmin solid #7a73ff;
+  aspect-ratio: 0.7142857143;
+  cursor: pointer;
+  position: relative;
+}
+.card:hover::before {
+  background-position: 100% 100%;
+  transform: scale(1.08, 1.03);
+}
+.card:hover > .card__content {
+  background-position: -10% 0%;
+}
+.card:hover > .card__content > .card__subtitle > .card__subtitle__word {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: opacity 0ms, transform 200ms cubic-bezier(0.9, 0.06, 0.15, 0.9);
+}
+.card:hover .card__title, .card:hover .card__subtitle {
+  color: white;
+}
+.card::before {
+  background: linear-gradient(130deg, transparent 0% 33%, #6200ea 66%, #ec407a 83.5%, #fdd835 100%);
+  background-size: 300% 300%;
+  background-position: 0% 0%;
+  content: "";
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 1;
+  transition: background-position 350ms ease;
+}
+.card__content {
+  background-image: radial-gradient(rgba(201, 201, 201, 0.2) 8%, transparent 8%);
+  background-position: 0 0;
+  background-size: 5vmin 5vmin;
+  height: 100%;
+  padding: 2.5vmin;
+  position: relative;
+  transition: background-position 350ms ease;
+  width: 100%;
+  z-index: 2;
+}
+.card__title, .card__subtitle {
+  color: #726e6e;
+  font-family: "Anek Latin", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  transition: color 350ms ease;
+}
+.card__title {
+  font-size: 3vmin;
+}
+.card__subtitle {
+  font-size: 2vmin;
+  margin-top: 2vmin;
+}
+.card__subtitle__word {
+  display: inline-block;
+  margin: 0vmin 0.3vmin;
+  opacity: 0;
+  position: relative;
+  transform: translateY(40%);
+  transition: none;
+}

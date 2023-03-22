@@ -1,0 +1,382 @@
+.footer {
+    --accentColor: #0a2540;
+    --linkHoverOpacity: 0.6;
+    --buttonHoverOpacity: 0.6;
+    --sectionBackgroundOverflow: hidden;
+    --footerColor: #0a2540;
+    --sectionAngleMaxHeight: none;
+    --angleNormal: -6deg;
+    --backgroundColor: #f6f9fc;
+    --columnPaddingNormal: 16px;
+    --layoutWidthMax: 1080px;
+    --columnCountMax: 4;
+    --guideSolidColor: rgba(66,71,112,0.06);
+    color: var(--footerColor);
+    --titleColor: #0a2540;
+    z-index: 2;
+    --fontWeightSemibold: 425;
+    --columnPaddingMedium: 32px;
+
+    --sectionPaddingNormalMax: 64;
+    --sectionPaddingMax: var(--sectionPaddingNormalMax);
+    --sectionPaddingBottomMax: var(--sectionPaddingMax);
+    --sectionPaddingBottom: calc(var(--sectionPaddingBottomMax)*1px);
+
+    --sectionAnglePaddingBaseMax: var(--sectionPaddingMax);
+    --sectionAnglePaddingTopBaseMax: var(--sectionAnglePaddingBaseMax);
+    --sectionAnglePaddingTopBase: calc(var(--sectionAnglePaddingTopBaseMax)*1px);
+    --gutterWidth: calc(var(--windowWidth)/2 - var(--layoutWidthMax)/2);
+    --sectionPaddingTopGutterWidth: var(--gutterWidth);
+    --angleNormalSin: 0.106;
+    --sectionAngleSin: var(--angleNormalSin);
+    --scrollbarWidth: 15px;
+    --windowWidth: calc(100vw - var(--scrollbarWidth));
+    --sectionAngleHeight: calc(var(--windowWidth)*var(--sectionAngleSin));
+    --sectionAnglePaddingTop: calc(var(--sectionAngleHeight) - var(--sectionAngleSin)*var(--sectionPaddingTopGutterWidth) + var(--sectionAnglePaddingTopBase));
+    --sectionPaddingTop: var(--sectionAnglePaddingTop);
+
+    --hoverTransition: 150ms cubic-bezier(0.215,0.61,0.355,1);
+    --fontWeightNormal: 300;
+    --fontFamily: "sohne-var","Helvetica Neue","Arial",sans-serif;
+
+    --stripeSetHeight: 72px;
+    --stripeColor: var(--blendBackground);
+    --blendBackground: #80e9ff;
+    --blendIntersection: #0048e5;
+    --blendForeground: #7a73ff;
+
+    position: relative;
+    isolation: isolate;
+    padding-top: 50px;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #f6f9fc;
+    --sectionTransformOrigin: 100% 0;
+    --angleNormal: -6deg;
+    transform-origin: var(--sectionTransformOrigin);
+    transform: skewY(var(--angleNormal));
+    padding-top: 100px;
+}
+
+.sectionMasked {
+    --sectionOverflow: visible;
+    overflow: var(--sectionOverflow);
+    position: relative;
+}
+
+.sectionBackgroundMask {
+    /*position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: var(--sectionBackgroundOverflow);*/
+}
+
+.sectionBackgroundMask__background {
+    position: relative;
+    height: 100%;
+    max-height: var(--sectionAngleMaxHeight);
+    width: 100%;
+    top: 0;
+    left: 0;
+    transform-origin: var(--sectionTransformOrigin);
+    transform: skewY(var(--angleNormal));
+    background: var(--backgroundColor);
+    overflow: hidden;
+}
+
+.Guides {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 0 var(--columnPaddingNormal);
+    pointer-events: none;
+}
+
+.Guides__container {
+    display: grid;
+    grid: 1fr/repeat(var(--columnCountMax),1fr);
+    position: relative;
+    max-width: var(--layoutWidthMax);
+    height: 100%;
+    margin: 0 auto;
+}
+
+.Guides__guide {
+    width: 1px;
+    background: var(--guideSolidColor);
+}
+
+.Section__container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    min-height: var(--sectionMinHeight);
+}
+
+.Section__layoutContainer {
+    width: 100%;
+    max-width: var(--layoutWidthMax);
+    margin: 0 var(--columnPaddingNormal);
+}
+
+.Section__layout {
+    padding: var(--sectionPaddingTop) 0 var(--sectionPaddingBottom);
+}
+
+.SiteFooterSection__layout {
+    display: grid;
+    grid: auto/repeat(2,1fr);
+    row-gap: 20px;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.SiteFooterSection__column {
+    display: grid;
+    row-gap: 20px;
+    grid: -webkit-min-content/auto;
+    grid: min-content/auto;
+    grid-auto-rows: -webkit-min-content;
+    grid-auto-rows: min-content;
+    grid-template-rows: auto -webkit-min-content;
+    grid-template-rows: auto min-content;
+}
+
+.SiteFooterSection__logo {
+    width: 46px;
+    height: 26px;
+    margin: 0 var(--columnPaddingNormal) 6px;
+    padding-left: 2px;
+    transition: var(--hoverTransition);
+    transition-property: color,opacity;
+}
+
+.SiteFooterSection__logoLink {
+
+}
+
+.SiteFooterSection__localeControls {
+    padding: 20px var(--columnPaddingNormal) 0;
+}
+
+.LocaleControl__country {
+    --localeControlArrowColor: #f6f9fc;
+    position: relative;
+}
+
+.LocaleControl__country button {
+    margin: 4px 0;
+    padding: 0 0 0 24px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    font: var(--fontWeightNormal) 15px/1.6 var(--fontFamily);
+    color: var(--accentColor);
+    text-align: left;
+}
+
+.LocaleControl__country button svg {
+    position: absolute;
+    top: 5px;
+    left: 0;
+}
+
+.LocaleControl__country button span {
+    user-select: none;
+    cursor: pointer;
+    font: var(--fontWeightNormal) 15px/1.6 var(--fontFamily);
+    color: var(--accentColor);
+    text-align: left;
+}
+
+.SiteFooterSection__copyright {
+    color: #364657;
+    --listSpacing: 4px;
+    --columnCount: 1;
+    --paddingRight: var(--columnPaddingNormal);
+    --paddingLeft: var(--columnPaddingNormal);
+    padding: 0 var(--paddingRight) 0 var(--paddingLeft);
+    font: var(--fontWeightNormal) 15px/1.6 var(--fontFamily);
+    letter-spacing: .2px;
+    --linkWeight: var(--fontWeightNormal);
+}
+
+.List__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.List__item {
+    position: relative;
+    margin: var(--listSpacing) 0;
+}
+
+.List__hasTitle {
+
+}
+
+.List {
+    --listSpacing: 4px;
+    --columnCount: 1;
+    --paddingRight: var(--columnPaddingNormal);
+    --paddingLeft: var(--columnPaddingNormal);
+    padding: 0 var(--paddingRight) 0 var(--paddingLeft);
+    font: var(--fontWeightNormal) 15px/1.6 var(--fontFamily);
+    letter-spacing: .2px;
+    --linkWeight: var(--fontWeightNormal);
+}
+
+.CopyTitle {
+    --titlePaddingLeft: var(--columnPaddingNormal);
+    --titlePaddingRight: var(--columnPaddingMedium);
+    position: relative;
+    padding: 0 var(--titlePaddingRight) 0 var(--titlePaddingLeft);
+    font-family: var(--fontFamily);
+    font-weight: var(--titleWeight);
+    font-size: var(--titleFontSize);
+    line-height: var(--titleLineHeight);
+    color: var(--titleColor);
+    letter-spacing: var(--titleLetterSpacing,.2px);
+    --titleFontSize: 15px;
+    --titleLineHeight: 1.6;
+    --titleWeight: var(--fontWeightSemibold);
+    --linkColor: currentColor;
+    --linkWeight: var(--fontWeightSemibold);
+    margin-bottom: 8px;
+    color: var(--titleColor);
+}
+
+.CopyTitle__inline {
+    --titlePaddingLeft: 0px;
+    --titlePaddingRight: 0px;
+}
+
+.List__hasTitle .List__list {
+    --linkColor: currentColor;
+    --linkWeight: var(--fontWeightNormal);
+}
+
+.Link {
+    font-weight: var(--linkWeight,var(--fontWeightSemibold));
+    cursor: pointer;
+    color: var(--linkColor);
+    opacity: var(--linkOpacity,1);
+    transition: var(--hoverTransition);
+    transition-property: color,opacity;
+    outline: none;
+}
+
+.StripeSet {
+    --stripeSetAlignCenterOffset: -40px;
+    --stripeSetSubpixelOffset: 0;
+    --stripeSetAngle: var(--angleNormal);
+    position: absolute;
+    height: var(--stripeSetHeight);
+    width: 100%;
+    transform: skewY(var(--stripeSetAngle)) translateY(var(--stripeSetSubpixelOffset));
+    overflow: hidden;
+}
+
+.StripeSet__alignEnd {
+    top: calc(var(--stripeSetHeight)*-1);
+}
+
+.StripeSet__TopLeft {
+    top: 0;
+    left: 0;
+    transform-origin: 100% 0;
+}
+
+.StripeSet__TopRight {
+    --stripeSetSubpixelOffset: -0.35px;
+    top: 0;
+    right: 0;
+    transform-origin: 100% 0;
+}
+
+.StripeSet__alignCenter {
+    top: var(--stripeSetAlignCenterOffset);
+}
+
+.Stripe {
+    --stripeInset: 0px;
+    --stripeWidth: var(--gutterWidth);
+    --stripeMinWidth: 80px;
+    --stripeHeight: 40px;
+    --stripeIntersectionTop: calc(var(--stripeSetHeight) - var(--stripeHeight));
+    --stripeIntersectionInset: 0px;
+    --stripeIntersectionWidth: var(--gutterWidth);
+    --stripeIntersectionBackground: var(--blendIntersection);
+    --stripeMaxInset: calc(var(--layoutWidthMax)/2);
+    --stripeStartMax: calc(var(--layoutWidthMax) + var(--gutterWidth));
+    --stripeStart: calc(var(--stripeStartMax) - var(--stripeInset) + var(--stripeBorderOffset));
+    --stripeBorderOffset: 0px;
+    right: var(--stripeStart);
+    width: calc(var(--stripeWidth) + var(--stripeInset) - var(--stripeBorderOffset)*2);
+    position: absolute;
+    height: var(--stripeHeight);
+    background: var(--stripeColor);
+    overflow: hidden;
+}
+
+.Stripe__widthNormal {
+    --stripeWidth: 160px;
+}
+
+.Stripe__accentNone:first-of-type {
+    --stripeColor: var(--blendBackground);
+}
+
+.Stripe__insetSmall {
+    --stripeInset: calc(var(--stripeMaxInset)*0.125);
+}
+
+.Stripe:nth-of-type(2) {
+    top: var(--stripeIntersectionTop);
+}
+
+.Stripe:nth-of-type(2).Stripe__accentNone {
+    --stripeColor: var(--blendForeground);
+}
+
+.Stripe--intersectionInsetSmall {
+    --stripeIntersectionInset: calc(var(--stripeMaxInset)*0.25);
+}
+
+.Stripe__intersection {
+    position: absolute;
+    top: var(--stripeIntersectionTop);
+    height: var(--stripeHeight);
+    transform: translateY(-0.25px);
+    background: var(--stripeIntersectionBackground);
+    left: calc(var(--stripeWidth) - var(--stripeIntersectionWidth));
+    width: calc(var(--stripeIntersectionWidth) + var(--stripeIntersectionInset));
+}
+
+.StripeSet__BottomRight .Stripe, .StripeSet__TopRight .Stripe {
+    right: auto;
+    left: var(--stripeStart);
+}
+
+.Stripe:nth-of-type(3) {
+    --stripeColor: transparent;
+}
+
+.Stripe__intersectionWidthNormal {
+    --stripeIntersectionWidth: 160px;
+}

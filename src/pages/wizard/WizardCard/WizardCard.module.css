@@ -1,0 +1,56 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: #fff;
+    border-radius: 15px;
+    max-width: calc(100% / 3 - 40px * 2 / 3);
+    overflow: hidden;
+    padding: 20px;
+}
+
+.cardContainer.selected, .cardContainer:hover {
+    outline: 5px solid #00d4ff;
+}
+
+.cardImage {
+    display: block;
+    object-fit: contain;
+    margin-bottom: auto;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+
+.cardTitle {
+    color: #0a2540;
+    font-size: 28px;
+    line-height: 34px;
+    text-align: center;
+    padding: 0 20px;
+    pointer-events: none;
+}
+
+.stepper {
+    height: auto;
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.minus, .plus {
+    padding: 10px 15px;
+    border: none;
+    background: #00d4ff;
+    color: #fff;
+    font-size: 18px;
+    min-width: 51px;
+}
+
+.count {
+    height: 100%;
+    width: 64px;
+    font-size: 18px;
+    color: #fff;
+}

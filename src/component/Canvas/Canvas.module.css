@@ -1,0 +1,21 @@
+.container {
+  overflow: hidden;
+  box-sizing: border-box;
+  aspect-ratio: auto 2.5116666667;
+}
+.container::after {
+  content: '';
+  transition: transform 1s 1s;
+  transform: translateX(-50%) scaleY(0.995);
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  min-width: 1000px;
+  width: 100%;
+  height: 100%;
+}
+.container .canvas {
+  width: 100%;
+  height: 500px;
+}
